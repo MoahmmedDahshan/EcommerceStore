@@ -16,5 +16,7 @@ class AdminDatabaseSeeder extends Seeder
             'email'=>'admin@app.com',
             'password'=>bcrypt('12345678')
         ]);
+
+        ;
     }
 }

@@ -17,10 +17,15 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     //the prefix in all route is admin => provider admin provider
     Route::group(['namespace' => 'Dashboard', 'middleware' => 'auth:admin' ,'prefix'=>'admin'], function () {
         Route::get('/', 'DashboardController@index')->name('admin.dashboard');
+        Route::get('/logout', 'LoginController@logout')->name('admin.logout');
 
         Route::group(['prefix' => 'settings'], function () {
             Route::get('/shopping-methods/{type}', 'SettingsController@editShoppingMethods')->name('edit.shopping.methods');
             Route::put('/shopping-methods/{id}', 'SettingsController@UpdateShoppingMethods')->name('update.shopping.methods');
+        });
+        Route::group(['prefix' => 'profile'], function () {
+            Route::get('/edit', 'ProfileController@editProfile')->name('edit.profile');
+            Route::put('/update', 'ProfileController@updateProfile')->name('update.profile');
         });
     });
 

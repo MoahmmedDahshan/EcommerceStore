@@ -11,7 +11,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">الرئيسية</a>
                                 </li>
-                                <li class="breadcrumb-item active"><a href="{{route('edit.shopping.methods','free')}}">وسائل التوصيل</a>
+                                <li class="breadcrumb-item active"><a href="{{route('edit.profile')}}">الملف الشخصي</a>
                                 </li>
                             </ol>
                         </div>
@@ -34,7 +34,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form">وسائل التوصيل</h4>
+                                    <h4 class="card-title" id="basic-layout-form">الملف الشخصي</h4>
                                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
@@ -49,33 +49,68 @@
                                 @include('dashboard.include.alerts.errors')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form" method="post" action="{{route('update.shopping.methods',$shopping_method->id)}}">
+                                        <form class="form" method="post" action="{{route('update.profile')}}">
                                             @csrf
                                             @method('put')
-                                            <input type="hidden" value="{{$shopping_method->id}}" name="id">
                                             <div class="form-body">
-                                                <h4 class="form-section"><i class="fas fa-truck"></i> تعديل وسيلة التوصيل</h4>
+                                                <h4 class="form-section"><i class="fas fa-user"></i> تعديل الملف الشخصي</h4>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">الاسم</label>
-                                                            <input type="text" id="projectinput1" class="form-control" value="{{$shopping_method->value}}" placeholder="الاسم"
-                                                                   name="value">
-                                                            @error('value')
+                                                            <input type="text" id="projectinput1" class="form-control" value="{{$admin->name}}" placeholder="الاسم"
+                                                                   name="name">
+                                                            @error('name')
                                                             <span class="text-danger">{{$message}}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput2">قيمة التوصيل</label>
-                                                            <input type="number" id="projectinput2" class="form-control" placeholder="قيمة التوصيل"
-                                                                   name="plain_value" value="{{$shopping_method->plain_value}}">
-                                                            @error('plain_value')
+                                                            <label for="projectinput2">البريد الإلكتروني</label>
+                                                            <input type="email" id="projectinput2" class="form-control" placeholder="البريد الإلكتورني"
+                                                                   name="email" value="{{$admin->email}}">
+                                                            @error('email')
                                                             <span class="text-danger">{{$message}}</span>
                                                             @enderror
                                                         </div>
 
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">كلمة المرور الحالية</label>
+                                                            <input type="password" id="projectinput1" class="form-control"  placeholder="كلمة المرور الحالية"
+                                                                   name="current_password">
+                                                            @error('current_password')
+                                                            <span class="text-danger">{{$message}}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput2">كلمة المرور الجديدة</label>
+                                                            <input type="password" id="projectinput2" class="form-control" placeholder="كلمة المرور الجديدة"
+                                                                   name="password">
+                                                            @error('password')
+                                                            <span class="text-danger">{{$message}}</span>
+                                                            @enderror
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">تأكيد كلمة المرور الجديدة</label>
+                                                            <input type="password" id="projectinput1" class="form-control"  placeholder="تأكيد كلمة المرور الجديدة"
+                                                                   name="password_confirmation">
+                                                            @error('password_confirmation')
+                                                            <span class="text-danger">{{$message}}</span>
+                                                            @enderror
+                                                        </div>
                                                     </div>
                                                 </div>
 {{--                                                <div class="row">--}}
